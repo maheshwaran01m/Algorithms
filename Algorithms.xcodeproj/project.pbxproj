@@ -19,6 +19,7 @@
 		9D554AD22AFFB990003D695D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9D554AD42AFFB991003D695D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D554AD72AFFB991003D695D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9D554AE22AFFBAF0003D695D /* Stack.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Stack.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 		9D554ADE2AFFB9B2003D695D /* Swift-Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				9D554AE22AFFBAF0003D695D /* Stack.playground */,
 			);
 			path = "Swift-Algorithms";
 			sourceTree = "<group>";
