@@ -15,6 +15,7 @@
 
 /* Begin PBXFileReference section */
 		9D2B55D22B008836003E4506 /* Problem_Examples.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Problem_Examples.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D2B55D32B00E139003E4506 /* Basic-Examples.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Basic-Examples.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9D554ACD2AFFB990003D695D /* Algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D554AD02AFFB990003D695D /* AlgorithmsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmsApp.swift; sourceTree = "<group>"; };
 		9D554AD22AFFB990003D695D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		9D554ADE2AFFB9B2003D695D /* Swift-Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				9D2B55D32B00E139003E4506 /* Basic-Examples.playground */,
 				9D554AE22AFFBAF0003D695D /* Stack.playground */,
 				9D2B55D22B008836003E4506 /* Problem_Examples.playground */,
 			);
