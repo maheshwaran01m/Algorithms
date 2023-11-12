@@ -117,7 +117,7 @@ func reverseNumbersUsingForLoop(values: [Int] = [1, 2, 3, 4, 5, 6]) -> [Int] {
   var newValues = [Int]()
   var index = values.count-1
   
-  for i in values {
+  for _ in values {
     newValues.append(values[index])
     index-=1
   }
@@ -135,7 +135,7 @@ func reverseStringUsingForLoop(_ string: String) -> String {
   }
   return result
 }
-print("Original: abcd efgh", "\nReverse:", reverseStringUsingForLoop("abcd efgh"))
+//print("Original: abcd efgh", "\nReverse:", reverseStringUsingForLoop("abcd efgh"))
 
 // MARK: - Fibonacci Series
 
@@ -155,3 +155,23 @@ func sumOfFibonacciSeries(_ n: Int = 9) -> Int {
   return sumOfFibonacciSeries(n-1) + sumOfFibonacciSeries(n-2)
 }
 //print("Sum of Fibonacci Series: ",sumOfFibonacciSeries())
+
+// MARK: - Sorting
+
+func sortedArray(_ values: [Int] = [9, 1, 8, 1, 3, 5, 10, 2, 8, 23, 6, -1]) -> [Int] {
+  var values = values
+  
+  for i in 0..<values.count {
+    for j in 0..<values.count {
+      var temp = 0
+      
+      if values[i] < values[j] {
+        temp = values[i]
+        values[i] = values[j]
+        values[j] = temp
+      }
+    }
+  }
+  return values
+}
+//print("Sort: ",sortedArray())
