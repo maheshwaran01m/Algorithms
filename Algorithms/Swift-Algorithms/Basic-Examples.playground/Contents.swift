@@ -158,22 +158,41 @@ func sumOfFibonacciSeries(_ n: Int = 9) -> Int {
 
 // MARK: - Sorting
 
-func sortedArray(_ values: [Int] = [9, 1, 8, 1, 3, 5, 10, 2, 8, 23, 6, -1],
-                 isAscending: Bool = true) -> [Int] {
-  var values = values
+func sortedArray(_ values: [Int] = [9, 1, 8, 1, 3, 5, 10, 2, 8, 23, 6, -1]) -> [Int] {
+  /*
+   var values = values
+   
+   for i in 0..<values.count {
+   for j in 0..<values.count {
+   var temp = 0
+   
+   if isAscending ? values[i] < values[j] : values[i] > values[j] {
+   temp = values[i]
+   values[i] = values[j]
+   values[j] = temp
+   }
+   }
+   }
+   return values
+   */
   
-  for i in 0..<values.count {
-    for j in 0..<values.count {
-      var temp = 0
-      
-      if isAscending ? values[i] < values[j] : values[i] > values[j] {
-        temp = values[i]
-        values[i] = values[j]
-        values[j] = temp
-      }
+  if values.count < 2 { return values }
+  let mid = values.count/2
+  
+  var lhs = sortedArray(Array(values[..<mid]))
+  var rhs = sortedArray(Array(values[mid..<values.count]))
+  
+  var sortedValues = [Int]()
+  
+  while lhs.count > 0 && rhs.count > 0 {
+    if lhs[0] < rhs[0] {
+      sortedValues.append(lhs[0])
+      lhs.remove(at: 0)
+    } else {
+      sortedValues.append(rhs[0])
+      rhs.remove(at: 0)
     }
   }
-  return values
+  return sortedValues+lhs+rhs
 }
-//print("Ascending Sort: ",sortedArray())
-//print("Descending Sort: ",sortedArray(isAscending: false))
+print(sortedArray())
