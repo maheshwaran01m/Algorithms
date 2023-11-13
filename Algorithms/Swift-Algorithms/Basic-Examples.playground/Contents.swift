@@ -158,14 +158,15 @@ func sumOfFibonacciSeries(_ n: Int = 9) -> Int {
 
 // MARK: - Sorting
 
-func sortedArray(_ values: [Int] = [9, 1, 8, 1, 3, 5, 10, 2, 8, 23, 6, -1]) -> [Int] {
+func sortedArray(_ values: [Int] = [9, 1, 8, 1, 3, 5, 10, 2, 8, 23, 6, -1],
+                 isAscending: Bool = true) -> [Int] {
   var values = values
   
   for i in 0..<values.count {
     for j in 0..<values.count {
       var temp = 0
       
-      if values[i] < values[j] {
+      if isAscending ? values[i] < values[j] : values[i] > values[j] {
         temp = values[i]
         values[i] = values[j]
         values[j] = temp
@@ -174,4 +175,5 @@ func sortedArray(_ values: [Int] = [9, 1, 8, 1, 3, 5, 10, 2, 8, 23, 6, -1]) -> [
   }
   return values
 }
-//print("Sort: ",sortedArray())
+//print("Ascending Sort: ",sortedArray())
+//print("Descending Sort: ",sortedArray(isAscending: false))
