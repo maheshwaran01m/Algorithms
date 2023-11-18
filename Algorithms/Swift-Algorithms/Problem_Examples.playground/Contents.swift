@@ -94,4 +94,26 @@ func binarySearch(_ nums: [Int] = [-1,0,3,5,9,12], _ target: Int = 0) -> Int {
   }
   return -1
 }
-binarySearch()
+//binarySearch()
+
+
+/* Rotate Image
+ You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+
+ You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+ */
+func rotate(_ matrix: inout [[Int]] = [[1,2,3],[4,5,6],[7,8,9]]) {
+  for i in 0..<matrix.count {
+    for j in i..<matrix.count {
+      let temp = matrix[i][j]
+      matrix[i][j] = matrix[j][i]
+      matrix[j][i] = temp
+    }
+    
+    for j in 0..<(matrix.count/2) {
+      let temp = matrix[i][j], len = matrix.count
+      matrix[i][j] = matrix[i][len-1-j]
+      matrix[i][len-1-j] = temp
+    }
+  }
+}
