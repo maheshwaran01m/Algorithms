@@ -6,10 +6,8 @@ import Foundation
 func exampleForEvenNumbers(_ values: [Int]) -> [Int] {
   var final = [Int]()
   
-  for value in values {
-    if value%2==0 {
-      final.append(value)
-    }
+  for value in values where value%2==0 {
+    final.append(value)
   }
   return final
 }
@@ -21,15 +19,13 @@ func exampleForEvenNumbers(_ values: [Int]) -> [Int] {
 func exampleForOddNumbers(_ values: [Int]) -> [Int] {
   var final = [Int]()
   
-  for value in values {
-    if value%2 != 0 {
-      final.append(value)
-    }
+  for value in values where value%2 != 0 {
+    final.append(value)
   }
   return final
 }
 
-//print(exampleForOddNumbers([1,3,4,5,7,9]))
+print(exampleForOddNumbers([1,3,4,5,7,9]))
 
 // MARK: - Addition of n numbers
 
