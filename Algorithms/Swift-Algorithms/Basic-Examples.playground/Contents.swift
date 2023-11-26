@@ -25,7 +25,7 @@ func exampleForOddNumbers(_ values: [Int]) -> [Int] {
   return final
 }
 
-print(exampleForOddNumbers([1,3,4,5,7,9]))
+//print(exampleForOddNumbers([1,3,4,5,7,9]))
 
 // MARK: - Addition of n numbers
 
@@ -191,4 +191,43 @@ func sortedArray(_ values: [Int] = [9, 1, 8, 1, 3, 5, 10, 2, 8, 23, 6, -1]) -> [
   }
   return sortedValues+lhs+rhs
 }
-print(sortedArray())
+//print(sortedArray())
+
+// MARK: - Patterns
+
+protocol Shape {
+  func draw() -> String
+}
+
+struct Triangle: Shape {
+  var size: Int
+  func draw() -> String {
+    var result: [String] = []
+    for length in 1...size {
+      result.append(String(repeating: "*", count: length))
+    }
+    return result.joined(separator: "\n")
+  }
+}
+let smallTriangle = Triangle(size: 3)
+//print(smallTriangle.draw())
+
+struct FlippedShape<T: Shape>: Shape {
+    var shape: T
+    func draw() -> String {
+        let lines = shape.draw().split(separator: "\n")
+        return lines.reversed().joined(separator: "\n")
+    }
+}
+let flippedTriangle = FlippedShape(shape: smallTriangle)
+//print(flippedTriangle.draw())
+
+struct JoinedShape<T: Shape, U: Shape>: Shape {
+    var top: T
+    var bottom: U
+    func draw() -> String {
+       return top.draw() + "\n" + bottom.draw()
+    }
+}
+let joinedTriangles = JoinedShape(top: smallTriangle, bottom: flippedTriangle)
+//print(joinedTriangles.draw())
