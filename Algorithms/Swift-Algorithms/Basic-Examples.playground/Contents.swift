@@ -231,3 +231,30 @@ struct JoinedShape<T: Shape, U: Shape>: Shape {
 }
 let joinedTriangles = JoinedShape(top: smallTriangle, bottom: flippedTriangle)
 //print(joinedTriangles.draw())
+
+// MARK: - Mean Average
+
+func meanAverage(_ numbers: [Double] = [1, 2, 3, 4, 5, 6, 7, 8]) -> Double {
+  guard !numbers.isEmpty else { return 0 }
+  
+  var total = 0.0
+  
+  for number in numbers {
+    total += number
+  }
+  return total / Double(numbers.count)
+}
+
+//print(meanAverage())
+
+// MARK: - Functions as first class types
+
+/*
+let notEqual = (!)
+print(notEqual(true))
+
+let add: (Int, Int) -> Int = (+)
+
+print(add(1, 5))
+
+*/
