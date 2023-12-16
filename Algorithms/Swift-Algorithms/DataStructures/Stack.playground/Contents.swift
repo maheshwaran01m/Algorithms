@@ -4,6 +4,8 @@ struct Stack<Element> {
   
   private var storage: [Element]
   
+  init() {}
+  
   init(_ elements: [Element]) {
     storage = elements
   }
@@ -24,6 +26,8 @@ struct Stack<Element> {
   var isEmpty: Bool {
     peek == nil
   }
+  
+  var count: Int { storage.count }
 }
 
 extension Stack: ExpressibleByArrayLiteral {
@@ -39,6 +43,14 @@ extension Stack: CustomStringConvertible {
     String(describing: storage)
   }
 }
+
+extension Stack: Equatable where Element: Equatable {}
+
+extension Stack: Hashable where Element: Hashable {}
+
+extension Stack: Encodable where Element: Encodable {}
+
+extension Stack: Decodable where Element: Decodable {}
 
 // MARK: - Example
 
