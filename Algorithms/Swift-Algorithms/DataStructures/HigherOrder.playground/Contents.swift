@@ -1,6 +1,6 @@
 import Foundation
 
-/// `` Map``
+// MARK: - Map
 
 extension Sequence {
   
@@ -21,7 +21,7 @@ let numbers1 = [1: "One", 2: "Two", 3: "Three"].tranformed { "\($0.key) = \($0.v
 //print(numbers, numbers1)
 
 
-/// ``Filter``
+// MARK: - Filter
 
 extension Sequence where Element: Equatable {
   
@@ -44,10 +44,6 @@ extension Sequence {
     return false
   }
   
-  func satisfy(_ predicate: (Element) throws -> Bool) rethrows -> Bool {
-    try !contains { try !predicate($0) }
-  }
-  
   func matching(_ predicate: (Element) throws -> Bool) rethrows -> [Element] {
     var matches = [Element]()
     
@@ -55,6 +51,15 @@ extension Sequence {
       matches.append(element)
     }
     return matches
+  }
+}
+
+// MARK: - Contains
+
+extension Sequence {
+  
+  func satisfy(_ predicate: (Element) throws -> Bool) rethrows -> Bool {
+    try !contains { try !predicate($0) }
   }
 }
 
@@ -79,3 +84,5 @@ extension Sequence {
 //let optionalValues = [1, nil, 3, nil, 5]
 //print(optionalValues.match { $0 })
 
+
+// MARK: - Reduce
