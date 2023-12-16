@@ -58,4 +58,24 @@ extension Sequence {
   }
 }
 
-numbers.filter { $0 / 2 == 1 }
+//numbers.matching { $0 / 2 == 1 }.description
+
+// MARK: - CompactMap
+
+extension Sequence {
+  
+  func match<T>(_ predicate: (Element) throws -> T?) rethrows -> [T] {
+    var matches = [T]()
+    
+    for element in self {
+      if let value = try predicate(element) {
+        matches.append(value)
+      }
+    }
+    return matches
+  }
+}
+
+//let optionalValues = [1, nil, 3, nil, 5]
+//print(optionalValues.match { $0 })
+
