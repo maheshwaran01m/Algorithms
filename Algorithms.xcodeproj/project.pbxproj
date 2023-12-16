@@ -27,6 +27,7 @@
 		9D85B75B2B2D78FE00945E45 /* Trees.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Trees.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9D85B75C2B2D847E00945E45 /* BinaryTees.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BinaryTees.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9DAC8C7E2B2D95AA00953D0A /* OrderedSets.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = OrderedSets.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9DAC8C7F2B2D9C2400953D0A /* SortedArrays.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SortedArrays.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +104,7 @@
 				9D85B75B2B2D78FE00945E45 /* Trees.playground */,
 				9D85B75C2B2D847E00945E45 /* BinaryTees.playground */,
 				9DAC8C7E2B2D95AA00953D0A /* OrderedSets.playground */,
+				9DAC8C7F2B2D9C2400953D0A /* SortedArrays.playground */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
