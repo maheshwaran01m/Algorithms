@@ -23,6 +23,7 @@
 		9D554AD72AFFB991003D695D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9D554AE22AFFBAF0003D695D /* Stack.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Stack.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9D85B7592B2D68E600945E45 /* LinkedList.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LinkedList.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		9D85B75A2B2D6F8500945E45 /* Queues.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Queues.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +96,7 @@
 			children = (
 				9D554AE22AFFBAF0003D695D /* Stack.playground */,
 				9D85B7592B2D68E600945E45 /* LinkedList.playground */,
+				9D85B75A2B2D6F8500945E45 /* Queues.playground */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
