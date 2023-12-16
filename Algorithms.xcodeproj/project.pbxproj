@@ -71,8 +71,8 @@
 		9D554ADE2AFFB9B2003D695D /* Swift-Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				9D85B7582B2D5FF100945E45 /* DataStructures */,
 				9D2B55D32B00E139003E4506 /* Basic-Examples.playground */,
-				9D554AE22AFFBAF0003D695D /* Stack.playground */,
 				9D2B55D22B008836003E4506 /* Problem_Examples.playground */,
 			);
 			path = "Swift-Algorithms";
@@ -87,6 +87,14 @@
 				9D554AD62AFFB991003D695D /* Preview Content */,
 			);
 			path = MainResources;
+			sourceTree = "<group>";
+		};
+		9D85B7582B2D5FF100945E45 /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
+				9D554AE22AFFBAF0003D695D /* Stack.playground */,
+			);
+			path = DataStructures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
