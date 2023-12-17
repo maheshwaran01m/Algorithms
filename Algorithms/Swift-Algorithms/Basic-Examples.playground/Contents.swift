@@ -258,3 +258,15 @@ let add: (Int, Int) -> Int = (+)
 print(add(1, 5))
 
 */
+
+// MARK: - Occurences
+
+func countOccurrences(of search: Character, in input: String) -> Int {
+  
+  var count = 0
+  for i in input where i == search {
+    count += 1
+  }
+  return count
+}
+//countOccurrences(of: "i", in: "Mississippi")

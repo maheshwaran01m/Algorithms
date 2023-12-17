@@ -102,6 +102,7 @@ func binarySearch(_ nums: [Int] = [-1,0,3,5,9,12], _ target: Int = 0) -> Int {
 
  You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
  */
+/*
 func rotate(_ matrix: inout [[Int]] = [[1,2,3],[4,5,6],[7,8,9]]) {
   for i in 0..<matrix.count {
     for j in i..<matrix.count {
@@ -117,3 +118,4 @@ func rotate(_ matrix: inout [[Int]] = [[1,2,3],[4,5,6],[7,8,9]]) {
     }
   }
 }
+*/
