@@ -61,6 +61,35 @@ extension Sequence {
   func satisfy(_ predicate: (Element) throws -> Bool) rethrows -> Bool {
     try !contains { try !predicate($0) }
   }
+  
+  func contains(where predicate: (Element) throws -> Bool) rethrows -> Bool {
+    for e in self where try predicate(e) {
+      return true
+    }
+    return false
+  }
+  
+  func min(
+    by areInIncreasingOrder: (Element, Element) throws -> Bool
+  ) rethrows -> Element? {
+    var it = makeIterator()
+    guard var result = it.next() else { return nil }
+    while let e = it.next() {
+      if try areInIncreasingOrder(e, result) { result = e }
+    }
+    return result
+  }
+  
+  func max(
+    by areInIncreasingOrder: (Element, Element) throws -> Bool
+  ) rethrows -> Element? {
+    var it = makeIterator()
+    guard var result = it.next() else { return nil }
+    while let e = it.next() {
+      if try areInIncreasingOrder(result, e) { result = e }
+    }
+    return result
+  }
 }
 
 //numbers.matching { $0 / 2 == 1 }.description
@@ -86,3 +115,33 @@ extension Sequence {
 
 
 // MARK: - Reduce
+
+extension Sequence {
+  
+  func total<Result>(
+    _ initialResult: Result,
+    _ nextPartialResult:
+      (_ partialResult: Result, Element) throws -> Result
+  ) rethrows -> Result {
+    
+    var accumulator = initialResult
+    for element in self {
+      accumulator = try nextPartialResult(accumulator, element)
+    }
+    return accumulator
+  }
+}
+
+// MARK: - Reversed
+
+extension Sequence {
+  
+  func inverted() -> [Element] {
+    var result = Array(self)
+    let count = result.count
+    for i in 0..<count/2 {
+      result.swapAt(i, count - ((i + 1) as Int))
+    }
+    return result
+  }
+}
