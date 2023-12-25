@@ -1,5 +1,13 @@
 import Foundation
 
+/// Time Complexity
+/*
+var start = CFAbsoluteTimeGetCurrent()
+var end = CFAbsoluteTimeGetCurrent()
+
+print("Time Complexity: \(end - start)")
+*/
+
 // MARK: - Even Numbers
 
 @discardableResult
@@ -270,3 +278,188 @@ func countOccurrences(of search: Character, in input: String) -> Int {
   return count
 }
 //countOccurrences(of: "i", in: "Mississippi")
+
+/// ``Write A pangram is string that contains every letter of the alphabet at least once``
+
+private func writePangram(_ string: String = "The Quick Brown fox jumps over the lazy dog") -> Bool {
+  /*
+  var alphabet = "abcdefghijklmnopqrstuvwxyz"
+  
+  for letter in string.lowercased() {
+    if alphabet.contains(letter) {
+      alphabet = alphabet.replacingOccurrences(of: String(letter), with: "")
+      if alphabet.count == 0 {
+        return true
+      }
+    }
+  }
+  return false
+  */
+  let alphabet = Set("abcdefghijklmnopqrstuvwxyz")
+   let lowercased = Set(string.lowercased())
+   
+   return lowercased.isSuperset(of: alphabet)
+}
+
+writePangram().description
+
+/// ``Three Differences Solution``
+
+private func writeThreeDifferences(_ a: String = "Clamp", b: String = "Crams") -> Bool {
+  guard a.count == b.count else { return false }
+  
+  var lhs = Array(a)
+  var rhs = Array(b)
+  var difference = 0
+  
+  for (index, letter) in lhs.enumerated() where rhs[index] != letter {
+    difference += 1
+    if difference > 3 {
+      return false
+    }
+  }
+  return true
+}
+writeThreeDifferences("clamp", b: "grans").description
+
+/// ``Given a string, return number of vowels and consonants``
+
+private func writeVowelsAndConsonants(_ string: String) -> (Int?, Int?) {
+  guard !string.isEmpty else { return (nil, nil) }
+  
+  let letters = string.lowercased().filter { $0 >= "a" && $0 <= "z" }
+  
+  let vowels = letters.filter { "aeiou".contains($0) }
+  
+  return (vowels.count, letters.count - vowels.count)
+}
+
+writeVowelsAndConsonants("dsa in swift ?????")
+
+/// ``Given string with letters and numbers, pull all the numbers then return their sum``
+
+private func sumOfNumbers(_ string: String) -> Int {
+  guard !string.isEmpty else { return 0 }
+  var count = 0
+  
+  for letter in string {
+    if let value = Int(String(letter)) {
+      count += value
+    }
+  }
+  
+  return count
+}
+sumOfNumbers("a1b2c3").description
+
+/// ``Palindromes``
+
+private func writePalindromes(_ string: String = "wow") -> Bool {
+  guard !string.isEmpty else { return false }
+//  return string.lowercased() == String(string.lowercased().reversed())
+  
+  var reversedString = ""
+  for letter in string {
+    reversedString = letter.description + reversedString
+  }
+  return reversedString.lowercased() == string.lowercased()
+}
+
+writePalindromes().description
+
+/// ``Reversed String``
+
+private func writeReversedString(_ string: String = "mot") -> String {
+  var reversedString = ""
+  for letter in string {
+    reversedString = "\(letter)" + reversedString
+  }
+  return reversedString
+}
+writeReversedString().description
+
+/// ``Reversed Int``
+private func writeReversedInt(_ value: Int = -123) -> Int {
+  var input = value, output = 0, negative = 1
+  
+  if input < 0 {
+    negative = -1
+    input = input * negative
+  }
+  
+  while input > 0 {
+    let lastDigit = input % 10
+    input = input / 10
+    output = (output * 10) + lastDigit
+  }
+  output = output * negative
+  
+  return output
+}
+writeReversedInt().description
+
+/// ``Run Length Encoding``
+private func writeRunLengthEncoding(_ string: String = "aabbcc") -> String {
+  guard !string.isEmpty else { return "" }
+  var length = ""
+  var count = 0
+  
+  for (index, letter) in string.enumerated() {
+    if index == 0 {
+      length.append(letter)
+    }
+    if letter != length.last {
+      length.append(String(count))
+      length.append(letter)
+      count = 1
+    } else {
+      count += 1
+    }
+  }
+  length.append(String(count))
+  
+  return length
+}
+writeRunLengthEncoding().description
+
+/// ``Unique strings``
+private func writeUniqueStrings(_ string: String = "abc") -> Bool {
+  guard !string.isEmpty else { return false }
+  var storage = [Character]()
+  
+  for letter in string {
+    if !storage.contains(letter) {
+      storage.append(letter)
+    } else {
+      return false
+    }
+  }
+  return true
+}
+writeUniqueStrings().description
+
+/// ``Detect the number from given 0 to  9223372036854775807``
+private func writeDectectorFinal(_ value: Int) -> String {
+  guard value >= 0 && value < Int.max else { return "" }
+  
+  var array = Array(String(value))
+  
+  var index = 0
+  var counter = 0
+  var finalString = ""
+  
+  for _ in 0..<Int.max {
+    if array[0+index].description == counter.description {
+      finalString.append(Character(counter.description))
+      index += 1
+      counter = 0
+      if index == array.count {
+        return finalString
+      }
+    } else {
+      counter += 1
+    }
+  }
+  return finalString
+}
+writeDectectorFinal(9223372036854775806).description
