@@ -629,4 +629,4 @@ private func writeMostCommonElementsCount(_ values: [String]) -> [String: Int] {
   }
   return dictionary
 }
-writeMostCommonElementsCount(stringArray).description
+writeMostCommonElementsCount(["a", "b", "a"]).description
