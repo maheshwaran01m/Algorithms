@@ -8,6 +8,10 @@ var end = CFAbsoluteTimeGetCurrent()
 print("Time Complexity: \(end - start)")
 */
 
+let stringArray = """
+To run the test, you'll be connected to Measurement Lab (M-Lab) and your IP address will be shared with them and processed by them in accordance with their privacy policy. M-Lab conducts the test and publicly publishes all test results to promote Internet research. Published information includes your IP address and test results, but doesn’t include any other information about you as an Internet user.
+""".split(separator: " ").map { $0.description }
+
 // MARK: - Even Numbers
 
 @discardableResult
@@ -47,6 +51,7 @@ additionOfN_Numbers(3)  // Time complexity: O(1)
 
 func isPrimeNumber(_ n: Int) -> Bool {
   guard n > 1 else { return false }
+  if n == 2 { return true }
   
   for i in 2..<n {
     return n%i != 0
@@ -463,3 +468,165 @@ private func writeDectectorFinal(_ value: Int) -> String {
   return finalString
 }
 writeDectectorFinal(9223372036854775806).description
+
+
+/// ``Rotate a string to get another string then return values``
+private func writeIsRotated(_ lhs: String = "tom", rhs: String = "mot") -> Bool {
+  guard lhs.count == rhs.count else { return false }
+  
+  var reversed = ""
+  for letter in lhs {
+    reversed = "\(letter)" + reversed
+  }
+  return reversed == rhs // -> 0.00026297569274902344
+  // (lhs+lhs).contains(rhs) -> 0.0006890296936035156
+}
+writeIsRotated("ab", rhs: "ba").description
+
+
+/// ``Identify Duplicates in array of strings, without for-loop``
+private func writeDuplicateInStrings(_ values: [String]) -> [String] {
+  guard !values.isEmpty else { return [] }
+  
+  var set = Set<String>()
+  return values.filter { !set.insert($0).inserted }
+  
+  /*
+  var finalValues: [String] = []
+  var duplicates: Set<String> = []
+  var index = 0
+  
+  while index < values.count {
+    
+    if duplicates.contains(values[index]) {
+      finalValues.append(values[index])
+    } else {
+      duplicates.insert(values[index])
+    }
+    index += 1
+  }
+  
+  return finalValues // time: 0.0017169713973999023 ~ 0.005265951156616211
+   */
+}
+
+writeDuplicateInStrings(["a", "b", "c"]).description
+
+private func filterStrings<T>(for values: [T], isEnabled: (T) -> Bool) -> [T] {
+  var result = [T]()
+  
+  for element in values {
+    if isEnabled(element) {
+      result.append(element)
+    }
+  }
+  return result
+}
+filterStrings(for: (0...1000).map { $0 }) { $0%2==0 }.description
+
+/// `` Letter and word pairs``
+private func writeALetterAndPairs(_ values: [String] = ["example", "for", "algorithms"]) -> [Character: String] {
+  guard !values.isEmpty else { return [:] }
+  var dictionary = [Character: String]()
+  
+  for i in values {
+    dictionary.updateValue(i, forKey: i.first!)
+  }
+  return dictionary
+}
+
+writeALetterAndPairs().description
+
+/// ``Write FizzBuzz``
+private func writeFizzBuzz(_ n: Int = 100) {
+  for i in 1...n {
+    if i%15==0 {
+      print("FizzBuzz")
+    } else if i%5==0 {
+      print("Buzz")
+    } else if i%3==0 {
+      print("Fizz")
+    } else {
+      print(i)
+    }
+  }
+}
+//writeFizzBuzz()
+
+/// ``Prime Numbers``
+private func writePrimeNumbers(_ n: Int = 100) {
+  guard n > 1 else { return }
+  if n == 2 { print(2) }
+  
+  for i in 2...n where i%2 != 0 {
+    print(i)
+  }
+}
+//writePrimeNumbers()
+
+/// ``Best time to buy and sell stocks``
+
+func maxProfit(_ prices: [Int]) -> Int {
+  var minimum: Int = Int.max
+  var profit: Int = 0
+  
+  for (index, element) in prices.enumerated() {
+    
+    if element < minimum {
+      minimum = element
+    } else {
+      profit = max(profit, element - minimum)
+    }
+  }
+  return profit
+}
+/// ``Most common element``
+
+private func writeMostCommonElement(_ values: [String]) -> [String] {
+  guard !values.isEmpty else { return [] }
+  
+  var dictionary = [String: Int]()
+  
+  for value in values {
+    if let count = dictionary[value] {
+      dictionary[value]! += 1
+    } else {
+      dictionary.updateValue(1, forKey: value)
+    }
+  }
+  /*
+  let keys = dictionary.filter { $0.value == dictionary.values.max() }.keys
+  return Array(keys)
+   */
+  var final = [String]()
+  for i in dictionary {
+    // peek value
+    /*
+    if i.value == dictionary.values.max() {
+      final.append(i.key)
+    }
+     */
+    // more than 1
+    if i.value > 1 {
+      final.append(i.key)
+    }
+  }
+  return final
+}
+writeMostCommonElement(["a", "b", "a"]).description
+
+private func writeMostCommonElementsCount(_ values: [String]) -> [String: Int] {
+  guard !values.isEmpty else { return [:] }
+  
+  var dictionary = [String: Int]()
+  
+  for value in values {
+    if let count = dictionary[value] {
+      dictionary[value]! += 1
+    } else {
+      dictionary.updateValue(1, forKey: value)
+    }
+  }
+  return dictionary
+}
+writeMostCommonElementsCount(stringArray).description
