@@ -630,3 +630,67 @@ private func writeMostCommonElementsCount(_ values: [String]) -> [String: Int] {
   return dictionary
 }
 writeMostCommonElementsCount(["a", "b", "a"]).description
+
+/// ``Only Numbers``
+private func writeOnlyNumbers(_ value: String) -> Bool {
+  /*
+  for i in value where Int(String(i)) == nil {
+    return false
+  }
+  return true
+  */
+  
+//  return value.count == value.filter { $0 >= "0" && $0 <= "9" }.count
+  
+  return Int(value) != nil // !value.contains("0123456789")
+}
+writeOnlyNumbers("abc123").description
+
+/// ``Only Number Values``
+private func writeOnlyNumberValues(_ value: String) -> String {
+  return value.filter { ("0"..."9").contains($0) }
+}
+writeOnlyNumberValues("abc123").description
+
+/// ``Number of times a character appears in string without using for loop``
+private func writeNumberOfTimesCharacterAppears(_ value: String, key: Character) -> Int {
+//  return value.count - value.replacingOccurrences(of: key, with: "").count
+  
+  var count = 0
+  for letter in value where letter == key {
+    count += 1
+  }
+  return count
+}
+writeNumberOfTimesCharacterAppears("apple", key: "p").description
+
+/// ``Permutations of given string``
+private func writePermutationOfString(_ value: String, currentValue: String = " ") {
+  guard currentValue.count > 0 else { return }
+  let array = Array(value)
+  
+  print(currentValue)
+  for letter in 0..<value.count {
+    let leftString = String(array[0..<letter])
+    let rightString = String(array[letter + 1..<array.count])
+    
+    writePermutationOfString(leftString + rightString, currentValue: currentValue + String(array[letter]))
+  }
+}
+//writePermutationOfString("ab")
+
+/// `` Find missing numbers``
+private func findMissingNumbers(_ values: [Int]) -> [Int] {
+  guard !values.isEmpty else { return [] }
+  var missing = [Int]()
+  var index = 0
+  
+  while index < values.count-1 {
+    if !values.contains(values[index]+1) {
+      missing.append(values[index]+1)
+    }
+    index+=1
+  }
+  return missing
+}
+findMissingNumbers([1,3, 5, 7]).description
