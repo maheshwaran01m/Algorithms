@@ -694,3 +694,222 @@ private func findMissingNumbers(_ values: [Int]) -> [Int] {
   return missing
 }
 findMissingNumbers([1,3, 5, 7]).description
+
+/// ``Deques - double-ended queue``
+
+struct Deque<T> {
+  
+  private var storage = [T]()
+  
+  var count: Int { storage.count }
+  var isEmpty: Bool { storage.count == 0 }
+  
+  mutating func insert(_ element: T) {
+    storage.insert(element, at: 0)
+  }
+  
+  mutating func push(_ element: T) {
+    storage.append(element)
+  }
+  
+  @discardableResult
+  mutating func remove(_ index: Int) -> T? {
+    storage.remove(at: index)
+  }
+  
+  @discardableResult
+  mutating func pop() -> T? {
+    storage.popLast()
+  }
+}
+
+extension Deque: CustomStringConvertible {
+  var description: String { storage.description }
+}
+
+var dequeExample = Deque<Int>()
+dequeExample.push(1)
+dequeExample.push(2)
+dequeExample.pop()
+dequeExample.description
+
+/// ``Add All Numbers``
+private func writeAddAllNumbers<T: Numeric>(_ values: [T]) -> T {
+  var finalValue: T = 0
+  
+  for i in values {
+    finalValue += i
+  }
+  return finalValue
+}
+writeAddAllNumbers([1, 2, 3, 4, 5])
+
+/// ``Binary Ones Representation``
+private func writeBinaryRepresentation(_ value: Int) -> (Int?, Int?) {
+  let number = String(value, radix: 2)
+  let binary = number.filter { $0 == "1" }.count
+  
+  var nextHighest: Int?
+  var nextLowest: Int?
+  
+  for i in value + 1...Int.max {
+    let currentBinary = String(i, radix: 2)
+    let count = currentBinary.filter { $0 == "1" }.count
+    
+    if count == binary {
+      nextHighest = i
+      break
+    }
+  }
+  
+  for i in (0..<value).reversed() {
+    let currentBinary = String(i, radix: 2)
+    let count = currentBinary.filter { $0 == "1" }.count
+    
+    if count == binary {
+      nextLowest = i
+      break
+    }
+  }
+  
+  return (nextLowest, nextHighest)
+}
+writeBinaryRepresentation(12)
+
+/// ``Binary Reversed``
+private func writeBinaryReversed(_ value: UInt) -> UInt? {
+  var binary = Array(String(value, radix: 2))
+  var reversed = ""
+  
+  for index in 0...7 {
+    if reversed.count < binary.count {
+      reversed.insert(binary[index], at: reversed.startIndex)
+    } else {
+      reversed.append("0")
+    }
+  }
+  
+  return UInt(reversed, radix: 2)
+}
+writeBinaryReversed(41)
+
+
+/// `` Sieves of Eratoshenes``
+/// return an array of prime numbers from 2 up to but excluding n
+private func writeSievesOfEratoshenes(_ key: Int) -> [Int] {
+  guard key > 1 else { return [] }
+  
+  var numbers = [Bool](repeating: true, count: key)
+  numbers[0] = false
+  numbers[1] = false
+  
+  let sqrt = Int(ceil(sqrt(Double(key))))
+  
+  for i in 2...sqrt where numbers[i] {
+    for j in stride(from: i * i, to: key, by: i) {
+      numbers[j] = false
+    }
+  }
+  return numbers.enumerated().compactMap { $1 ? $0 : nil }
+}
+writeSievesOfEratoshenes(10).description
+
+
+// MARK: - Linked List
+
+/// ``Linked List``
+
+class Node<T> {
+  var value: T
+  var next: Node<T>?
+  
+  init(_ value: T) {
+    self.value = value
+  }
+}
+
+class LinkedList<T> {
+  
+  var head: Node<T>?
+  
+  func printNode() {
+    var currentNode = head
+    
+    while let node = currentNode {
+//      print(node.value, terminator: " ")
+      currentNode = node.next
+    }
+  }
+}
+
+var linkedListExample = LinkedList<Character>()
+var previous: Node<Character>?
+
+for letter in "abcdefghijklmnopqrstuvwxyz" {
+  let node = Node(letter)
+  
+  if previous != nil {
+    previous?.next = node
+  } else {
+    linkedListExample.head = node
+  }
+  previous = node
+}
+linkedListExample.printNode()
+
+/// ``LinkedList middle node``
+
+extension LinkedList {
+  
+  var middle: Node<T>? {
+    var slow = head
+    var fast = head
+    
+    while fast != nil && fast?.next != nil {
+      slow = slow?.next
+      fast = fast?.next?.next
+    }
+    return slow
+  }
+}
+linkedListExample.middle?.value // time: O(n)
+
+/// ``Find number of X in game of tic tac toe``
+
+private func writeNumberOfXInTicTacToe(_ values: [[String]]) -> Int {
+  guard !values.isEmpty else { return 0 }
+  var total = 0
+  
+  for index in 0..<values.count {
+    for letter in values[index] where letter == "x" {
+      total += 1
+    }
+  }
+  return total //values.flatMap { $0 }.filter { $0 == "x"}.count
+}
+writeNumberOfXInTicTacToe([["x", "x", "o"], ["o", "x", "o"], ["x", "o", "x"]]).description
+
+/// ``Find the winner of tic tac toe``
+private func writeWinnerOfTicTacToe(_ values: [[String]]) -> Bool {
+  guard !values.isEmpty else { return false }
+  
+  let winner = [1: [0,1,2], 2: [0, 4, 8], 3: [0, 3, 6],
+                4: [1, 4, 7], 5: [2, 5, 8], 6: [2, 4, 6],
+                7: [3, 4, 5], 8: [6, 7, 8]]
+  
+  let array = values.flatMap { $0 }
+  
+  for index in winner.values {
+    if array[index[0]] == "x", array[index[1]] == "x",  array[index[2]] == "x" {
+      return true
+    }
+    
+    if array[index[0]] == "o", array[index[1]] == "o",  array[index[2]] == "o" {
+      return true
+    }
+  }
+  
+  return false
+}
+
+writeWinnerOfTicTacToe([["x", "", "o"], ["", "x", "o"], ["", "", "x"]]).description
