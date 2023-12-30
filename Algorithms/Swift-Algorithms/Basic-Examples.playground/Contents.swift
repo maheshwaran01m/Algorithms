@@ -915,3 +915,28 @@ private func writeWinnerOfTicTacToe(_ values: [[String]]) -> Bool {
 }
 
 writeWinnerOfTicTacToe([["x", "", "o"], ["", "x", "o"], ["", "", "x"]]).description
+
+/// ``Remove the duplicates from sorted array in-place withou extra allocation``
+private func writeRemoveDuplicates(_ values: inout [Int]) -> [Int] {
+  guard !values.isEmpty else { return [0] }
+  
+  var current = 0
+  var index = 0
+  
+  for (i, value) in values.enumerated() {
+    if i == 0 {
+      current = value
+    } else {
+      if current == value {
+        values.remove(at: i - index)
+        index += 1
+      } else {
+        current = value
+      }
+    }
+  }
+  return values
+  // NSOrderedSet(array: values).array
+}
+var removeDuplicates  = [0,0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 6, 7, 7]
+writeRemoveDuplicates(&removeDuplicates).description
