@@ -874,6 +874,7 @@ extension LinkedList {
 }
 linkedListExample.middle?.value // time: O(n)
 
+
 /// ``Find number of X in game of tic tac toe``
 
 private func writeNumberOfXInTicTacToe(_ values: [[String]]) -> Int {
@@ -888,6 +889,7 @@ private func writeNumberOfXInTicTacToe(_ values: [[String]]) -> Int {
   return total //values.flatMap { $0 }.filter { $0 == "x"}.count
 }
 writeNumberOfXInTicTacToe([["x", "x", "o"], ["o", "x", "o"], ["x", "o", "x"]]).description
+
 
 /// ``Find the winner of tic tac toe``
 private func writeWinnerOfTicTacToe(_ values: [[String]]) -> Bool {
