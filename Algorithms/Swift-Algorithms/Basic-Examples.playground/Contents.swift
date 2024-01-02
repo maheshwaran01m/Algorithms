@@ -940,3 +940,47 @@ private func writeRemoveDuplicates(_ values: inout [Int]) -> [Int] {
 }
 var removeDuplicates  = [0,0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 6, 7, 7]
 writeRemoveDuplicates(&removeDuplicates).description
+
+/// ``Most common elements in array``
+private func writeMostCommonElement(_ values: [Int]) -> [Int] {
+  guard !values.isEmpty else { return [] }
+  
+  var finalValues = [Int: Int]()
+  
+  for value in values {
+    if let value = finalValues[value] {
+      finalValues.updateValue(value+1, forKey: value)
+    } else {
+      finalValues.updateValue(value, forKey: value)
+    }
+  }
+  
+  var results = [Int]()
+  for i in finalValues.keys where i > 1 {
+    results.append(i)
+  }
+  return results
+}
+writeMostCommonElement([1,2,3,2,3,2]).description
+
+/// ``Find the Single number``
+/// every element appears three thimees excepts for one, which appears exactly once. Find
+private func findTheSingleNumbers(_ values: [Int]) -> Int {
+  guard !values.isEmpty else { return 0 }
+  
+  var d = [Int: Int]()
+  
+  for value in values {
+    if let i = d[value] {
+      d.updateValue(i+1, forKey: value)
+    } else {
+      d.updateValue(1, forKey: value)
+    }
+  }
+  var result = 0
+  for i in d where i.value == 1 {
+    result = i.key
+  }
+  return result
+}
+findTheSingleNumbers([0,1,0,1,0,1,99]).description
