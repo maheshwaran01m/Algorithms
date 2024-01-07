@@ -2,11 +2,11 @@ import Foundation
 
 /// Time Complexity
 /*
-var start = CFAbsoluteTimeGetCurrent()
-var end = CFAbsoluteTimeGetCurrent()
-
-print("Time Complexity: \(end - start)")
-*/
+ var start = CFAbsoluteTimeGetCurrent()
+ var end = CFAbsoluteTimeGetCurrent()
+ 
+ print("Time Complexity: \(end - start)")
+ */
 
 let stringArray = """
 To run the test, you'll be connected to Measurement Lab (M-Lab) and your IP address will be shared with them and processed by them in accordance with their privacy policy. M-Lab conducts the test and publicly publishes all test results to promote Internet research. Published information includes your IP address and test results, but doesn’t include any other information about you as an Internet user.
@@ -226,21 +226,21 @@ let smallTriangle = Triangle(size: 3)
 //print(smallTriangle.draw())
 
 struct FlippedShape<T: Shape>: Shape {
-    var shape: T
-    func draw() -> String {
-        let lines = shape.draw().split(separator: "\n")
-        return lines.reversed().joined(separator: "\n")
-    }
+  var shape: T
+  func draw() -> String {
+    let lines = shape.draw().split(separator: "\n")
+    return lines.reversed().joined(separator: "\n")
+  }
 }
 let flippedTriangle = FlippedShape(shape: smallTriangle)
 //print(flippedTriangle.draw())
 
 struct JoinedShape<T: Shape, U: Shape>: Shape {
-    var top: T
-    var bottom: U
-    func draw() -> String {
-       return top.draw() + "\n" + bottom.draw()
-    }
+  var top: T
+  var bottom: U
+  func draw() -> String {
+    return top.draw() + "\n" + bottom.draw()
+  }
 }
 let joinedTriangles = JoinedShape(top: smallTriangle, bottom: flippedTriangle)
 //print(joinedTriangles.draw())
@@ -263,14 +263,14 @@ func meanAverage(_ numbers: [Double] = [1, 2, 3, 4, 5, 6, 7, 8]) -> Double {
 // MARK: - Functions as first class types
 
 /*
-let notEqual = (!)
-print(notEqual(true))
-
-let add: (Int, Int) -> Int = (+)
-
-print(add(1, 5))
-
-*/
+ let notEqual = (!)
+ print(notEqual(true))
+ 
+ let add: (Int, Int) -> Int = (+)
+ 
+ print(add(1, 5))
+ 
+ */
 
 // MARK: - Occurences
 
@@ -288,22 +288,22 @@ func countOccurrences(of search: Character, in input: String) -> Int {
 
 private func writePangram(_ string: String = "The Quick Brown fox jumps over the lazy dog") -> Bool {
   /*
-  var alphabet = "abcdefghijklmnopqrstuvwxyz"
-  
-  for letter in string.lowercased() {
-    if alphabet.contains(letter) {
-      alphabet = alphabet.replacingOccurrences(of: String(letter), with: "")
-      if alphabet.count == 0 {
-        return true
-      }
-    }
-  }
-  return false
-  */
-  let alphabet = Set("abcdefghijklmnopqrstuvwxyz")
-   let lowercased = Set(string.lowercased())
+   var alphabet = "abcdefghijklmnopqrstuvwxyz"
    
-   return lowercased.isSuperset(of: alphabet)
+   for letter in string.lowercased() {
+   if alphabet.contains(letter) {
+   alphabet = alphabet.replacingOccurrences(of: String(letter), with: "")
+   if alphabet.count == 0 {
+   return true
+   }
+   }
+   }
+   return false
+   */
+  let alphabet = Set("abcdefghijklmnopqrstuvwxyz")
+  let lowercased = Set(string.lowercased())
+  
+  return lowercased.isSuperset(of: alphabet)
 }
 
 writePangram().description
@@ -361,7 +361,7 @@ sumOfNumbers("a1b2c3").description
 
 private func writePalindromes(_ string: String = "wow") -> Bool {
   guard !string.isEmpty else { return false }
-//  return string.lowercased() == String(string.lowercased().reversed())
+  //  return string.lowercased() == String(string.lowercased().reversed())
   
   var reversedString = ""
   for letter in string {
@@ -492,21 +492,21 @@ private func writeDuplicateInStrings(_ values: [String]) -> [String] {
   return values.filter { !set.insert($0).inserted }
   
   /*
-  var finalValues: [String] = []
-  var duplicates: Set<String> = []
-  var index = 0
-  
-  while index < values.count {
-    
-    if duplicates.contains(values[index]) {
-      finalValues.append(values[index])
-    } else {
-      duplicates.insert(values[index])
-    }
-    index += 1
-  }
-  
-  return finalValues // time: 0.0017169713973999023 ~ 0.005265951156616211
+   var finalValues: [String] = []
+   var duplicates: Set<String> = []
+   var index = 0
+   
+   while index < values.count {
+   
+   if duplicates.contains(values[index]) {
+   finalValues.append(values[index])
+   } else {
+   duplicates.insert(values[index])
+   }
+   index += 1
+   }
+   
+   return finalValues // time: 0.0017169713973999023 ~ 0.005265951156616211
    */
 }
 
@@ -595,16 +595,16 @@ private func writeMostCommonElement(_ values: [String]) -> [String] {
     }
   }
   /*
-  let keys = dictionary.filter { $0.value == dictionary.values.max() }.keys
-  return Array(keys)
+   let keys = dictionary.filter { $0.value == dictionary.values.max() }.keys
+   return Array(keys)
    */
   var final = [String]()
   for i in dictionary {
     // peek value
     /*
-    if i.value == dictionary.values.max() {
-      final.append(i.key)
-    }
+     if i.value == dictionary.values.max() {
+     final.append(i.key)
+     }
      */
     // more than 1
     if i.value > 1 {
@@ -634,13 +634,13 @@ writeMostCommonElementsCount(["a", "b", "a"]).description
 /// ``Only Numbers``
 private func writeOnlyNumbers(_ value: String) -> Bool {
   /*
-  for i in value where Int(String(i)) == nil {
-    return false
-  }
-  return true
-  */
+   for i in value where Int(String(i)) == nil {
+   return false
+   }
+   return true
+   */
   
-//  return value.count == value.filter { $0 >= "0" && $0 <= "9" }.count
+  //  return value.count == value.filter { $0 >= "0" && $0 <= "9" }.count
   
   return Int(value) != nil // !value.contains("0123456789")
 }
@@ -654,7 +654,7 @@ writeOnlyNumberValues("abc123").description
 
 /// ``Number of times a character appears in string without using for loop``
 private func writeNumberOfTimesCharacterAppears(_ value: String, key: Character) -> Int {
-//  return value.count - value.replacingOccurrences(of: key, with: "").count
+  //  return value.count - value.replacingOccurrences(of: key, with: "").count
   
   var count = 0
   for letter in value where letter == key {
@@ -836,7 +836,7 @@ class LinkedList<T> {
     var currentNode = head
     
     while let node = currentNode {
-//      print(node.value, terminator: " ")
+      //      print(node.value, terminator: " ")
       currentNode = node.next
     }
   }
@@ -984,3 +984,124 @@ private func findTheSingleNumbers(_ values: [Int]) -> Int {
   return result
 }
 findTheSingleNumbers([0,1,0,1,0,1,99]).description
+
+/// ``Reverse only letters``
+private func writeOnlyLetter(_ values: String)  -> String {
+  guard !values.isEmpty else { return "" }
+  
+  var values = Array(values)
+  var left = 0
+  var right = values.count-1
+  
+  while left < right {
+    if values[left].isLetter && values[right].isLetter {
+      values.swapAt(left, right)
+      left += 1
+      right -= 1
+    } else if !values[left].isLetter && values[right].isLetter {
+      left += 1
+    } else if values[left].isLetter && !values[right].isLetter {
+      right -= 1
+    } else {
+      right -= 1
+      left += 1
+    }
+  }
+  return String(values)
+}
+writeOnlyLetter("ab-cd!-/").description
+
+/// ``Grouping Anagrams``
+private func writeGropingAnagrams(_ values: [String]) -> [[String]] {
+  guard !values.isEmpty else { return [] }
+  
+  var dictionary = [String: [String]]()
+  
+  for value in values {
+    dictionary[String(value.sorted()), default: []].append(value)
+  }
+  
+  return Array(dictionary.values)
+}
+writeGropingAnagrams(["eat","tea","tan","ate","nat","bat"]).description
+
+/// ``First Missing Positive``
+private func findMissingPositive(_ values: [Int]) -> Int {
+  guard !values.isEmpty else { return -1 }
+  
+  let values = Set(values)
+  
+  for value in 0..<values.count {
+    if !values.contains(value+1) {
+      return value+1
+    }
+  }
+  return values.count + 1
+}
+
+/// ``Counting Bits``
+private func findCountingBits(_ value: Int) -> [Int] {
+  guard value > 0 else { return [] }
+  
+  var final = [Int]()
+  
+  for number in 0...value {
+    let binary = String(number, radix: 2).filter { $0 == "1" }.count
+    final.append(binary)
+  }
+  
+  return final
+}
+findCountingBits(5).description
+
+/// ``Max Consecutive Ones``
+private func findMaxConsecutiveOnse(_ values: [Int]) -> Int {
+  guard !values.isEmpty else { return 0 }
+  
+  var count = 0
+  var finalValue = 0
+  
+  for value in values {
+    if value == 1 {
+      count += 1
+      finalValue = max(finalValue, count)
+    } else {
+      count = 0
+    }
+  }
+  
+  return finalValue
+}
+findMaxConsecutiveOnse([1,1,0,1,1,1]).description
+
+/// ``Move Zeros``
+private func findAndMoveZeros(_ values: inout [Int])  {
+  guard !values.isEmpty else { return }
+  
+  var count = 0
+  
+  for value in values {
+    if value == 0 {
+      values.remove(at: count)
+      values.append(0)
+    } else {
+      count += 1
+    }
+  }
+}
+private var findAndMoveZero = [0,1,2,0,3]
+findAndMoveZeros(&findAndMoveZero)
+
+/// ``Kth largest Element in an Array``
+private func findKthLargest(_ values: [Int], k: Int) -> Int {
+  let count = values.count
+  if k > 0 && k <= count {
+    return values.sorted()[count-k]
+  } else {
+    return 0
+  }
+  /*
+   let sorted = values.sorted()
+   return sorted[sorted.count - k]
+   */
+}
